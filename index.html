@@ -3,13 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3d model</title>
+
+    <title>D models</title>
     <style>
       body {
         margin: 0;
       }
       canvas {
         display: block;
+      }
+
+      #info {
+        position: relative;
+        top: 400px;
+        width: 100%;
+        text-align: center;
+        z-index: 100;
+        display:block;
+        font-family: monospace;
+        font-weight: bold;
+        font-size: 15px;
       }
     </style>
   </head>
@@ -47,11 +60,11 @@
 
       scene.background = new THREE.Color(0xffffff);
 
-      var light = new THREE.HemisphereLight(0xffffff, 0xffffff, 1);
+      var light = new THREE.HemisphereLight(0xffffff, 0xffffff, 10);
       scene.add(light);
 
       var plight = new THREE.PointLight(0xffffff, 3, 0)
-      plight.position.set(0, 0, 10)
+      plight.position.set(10, 10, 10)
       plight.castShadow = true;
       scene.add(plight);
 
@@ -64,6 +77,8 @@
         renderer.render(scene, camera);
       }
     </script>
+
+    <div id="info">coming soon</div>
 
   </body>
 </html>
