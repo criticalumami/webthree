@@ -22,7 +22,10 @@
     <script src="three.js"></script>
     <script type="module" src="GLTFLoader.js"></script>
     <script type="module" src="OrbitControls.js"></script>
+
+
     <script type="module">
+      
       import { OrbitControls } from "./OrbitControls.js";
       import { GLTFLoader } from "./GLTFLoader.js";
 
@@ -68,7 +71,7 @@
       var controls = new OrbitControls( camera, renderer.domElement );
       camera.position.set(5, 25, 5);
 
-
+      camera.lookAt( point );
 
 
 
