@@ -57,18 +57,32 @@
 
       scene.background = new THREE.Color(0xffffff);
 
-      var light = new THREE.HemisphereLight(0xffffff, 0xffffff, 1);
+      {{/*  var light = new THREE.HemisphereLight(0xffffff, 0xffffff, 1);
       light.position.set( 0, 1, 0 );
-      scene.add(light);
+      scene.add(light);  */}}
 
-      var plight = new THREE.PointLight(0xffffff, 3)
+      {{/*  var plight = new THREE.PointLight(0xffffff, 3)
       plight.position.set(0, 105, 0)
       plight.castShadow = true;
-      scene.add(plight);
+      scene.add(plight);  */}}
+
+      const dirLight = new THREE.DirectionalLight( 0xffffff, 2 );
+
+      dirLight.position.set( 1, 20, 1 );
+      dirLight.position.multiplyScalar( 30 );
+      scene.add( dirLight );
+
+      dirLight.castShadow = true;
+
+      dirLight.shadow.mapSize.width = 2048;
+      dirLight.shadow.mapSize.height = 2048;
+
+
+
       
       var point = new THREE.Vector3( 0, 0, 0 );
-      camera.position.set(5, 25, 5);
-      camera.lookAt(5,5,5);
+      camera.position.set(50, 25, 20);
+
 
 
 
