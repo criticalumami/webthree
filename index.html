@@ -58,26 +58,38 @@
       scene.background = new THREE.Color(0xffffff);
 
       var light = new THREE.HemisphereLight(0xffffff, 0xffffff, 1);
-      light.position.set( 0, 50, 0 );
+      light.position.set( 0, 1, 0 );
       scene.add(light);
 
       var plight = new THREE.PointLight(0xffffff, 3)
-      plight.position.set(0, 5, 0)
+      plight.position.set(0, 105, 0)
       plight.castShadow = true;
       scene.add(plight);
       
       var point = new THREE.Vector3( 0, 0, 0 );
+      camera.position.set(5, 25, 5);
+      camera.lookAt(5,5,5);
+
+
 
       var controls = new OrbitControls( camera, renderer.domElement );
-      camera.position.set(5, 25, 5);
+      controls.listenToKeyEvents( window ); // optional
 
-      camera.lookAt( point );
+      //controls.addEventListener( 'change', render ); // call this only in static scenes (i.e., if there is no animation loop)
 
+      controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
+      controls.dampingFactor = 0.05;
 
+      controls.screenSpacePanning = false;
+
+      controls.minDistance = 100;
+      controls.maxDistance = 500;
+
+      controls.maxPolarAngle = Math.PI / 2;
 
       function animate() {
         requestAnimationFrame(animate);
-        obj.rotation.y += 0.005;
+        obj.rotation.y += 0.000;
         renderer.render(scene, camera);
       }
 
