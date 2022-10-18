@@ -50,7 +50,7 @@
         obj = gltf.scene;
         obj.castShadow = true;
         obj.receiveShadow = true;
-        obj.position.set( 5, 0, 5 );
+        obj.position.set( 0, 0, 0 );
         scene.add(gltf.scene);
         animate();
       });
@@ -81,7 +81,9 @@
 
       
       var point = new THREE.Vector3( 0, 0, 0 );
-      camera.position.set(50, 25, 20);
+      camera.position.set(-10, 10, -10);
+
+      console.log(camera.position)
 
 
 
@@ -100,6 +102,7 @@
       controls.maxDistance = 500;
 
       controls.maxPolarAngle = Math.PI / 2;
+      controls.target = obj;
 
       function animate() {
         requestAnimationFrame(animate);
