@@ -13,17 +13,6 @@
         display: block;
       }
 
-      #info {
-        position: relative;
-        top: 400px;
-        width: 100%;
-        text-align: center;
-        z-index: 100;
-        display:block;
-        font-family: monospace;
-        font-weight: bold;
-        font-size: 25px;
-      }
     </style>
   </head>
   <body>
@@ -32,7 +21,9 @@
     
     <script src="three.js"></script>
     <script type="module" src="GLTFLoader.js"></script>
+    <script type="module" src="OrbitControls.js"></script>
     <script type="module">
+      import { OrbitControls } from "./OrbitControls.js";
       import { GLTFLoader } from "./GLTFLoader.js";
 
       var scene = new THREE.Scene();
@@ -43,42 +34,52 @@
         0.01,
         1000
       );
-      var renderer = new THREE.WebGLRenderer();
+      
+      var renderer = new THREE.WebGLRenderer( { antialias: true } );
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
 
       var loader = new GLTFLoader();
 
       var obj;
+
       loader.load("scene.gltf", function (gltf) {
         obj = gltf.scene;
         obj.castShadow = true;
-        obj.receiveShadow = false;
+        obj.receiveShadow = true;
+        obj.position.set( 5, 0, 5 );
         scene.add(gltf.scene);
         animate();
       });
 
       scene.background = new THREE.Color(0xffffff);
 
-      var light = new THREE.HemisphereLight(0xffffff, 0xffffff, 10);
+      var light = new THREE.HemisphereLight(0xffffff, 0xffffff, 1);
+      light.position.set( 0, 50, 0 );
       scene.add(light);
 
-      var plight = new THREE.PointLight(0xffffff, 3, 0)
-      plight.position.set(10, 10, 10)
+      var plight = new THREE.PointLight(0xffffff, 3)
+      plight.position.set(0, 5, 0)
       plight.castShadow = true;
       scene.add(plight);
+      
+      var point = new THREE.Vector3( 0, 0, 0 );
 
-      camera.position.set(0, 0, 4);
+      var controls = new OrbitControls( camera, renderer.domElement );
+      camera.position.set(5, 25, 5);
+
+
+
+
 
       function animate() {
         requestAnimationFrame(animate);
-        obj.rotation.y += 0.015;
-
+        obj.rotation.y += 0.005;
         renderer.render(scene, camera);
       }
-    </script>
 
-    <div id="info">coming soon</div>
+      
+    </script>
 
   </body>
 </html>
