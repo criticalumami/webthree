@@ -35,7 +35,7 @@
         75,
         window.innerWidth / window.innerHeight,
         0.01,
-        1000
+        500
       );
       
       var renderer = new THREE.WebGLRenderer( { antialias: true } );
@@ -50,8 +50,17 @@
 
       loader.load("scene.gltf", function (gltf) {
         obj = gltf.scene;
-        obj.castShadow = true;
-        obj.receiveShadow = true;
+        obj.castShadow = false;
+        obj.receiveShadow = false;
+        obj.position.set( 0, 0, 0 );
+        scene.add(gltf.scene);
+        animate();
+      });
+
+      loader.load("turntable.gltf", function (gltf) {
+        obj = gltf.scene;
+        obj.castShadow = false;
+        obj.receiveShadow = false;
         obj.position.set( 0, 0, 0 );
         scene.add(gltf.scene);
         animate();
@@ -59,10 +68,10 @@
 
       scene.background = new THREE.Color(0xffffff);
 
-      const dirLight = new THREE.DirectionalLight( 0xffffff, 2 );
+      const dirLight = new THREE.DirectionalLight( 0xffffff, 3 );
 
-      dirLight.position.set( 0, 10, 0 );
-      dirLight.castShadow = true;
+      dirLight.position.set( 0, 15, 0 );
+      dirLight.castShadow = false;
       let t = new THREE.Object3D()
       dirLight.target.set = t;
       scene.add( dirLight );
@@ -89,7 +98,7 @@
 
       function animate() {
         requestAnimationFrame(animate);
-        obj.rotation.y += 0.000;
+        obj.rotation.y += 0.020;
         renderer.render(scene, camera);
       }
 
