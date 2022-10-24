@@ -50,42 +50,33 @@
 
       loader.load("scene.gltf", function (gltf) {
         obj = gltf.scene;
-        obj.castShadow = false;
-        obj.receiveShadow = false;
+        obj.castShadow = true;
+        obj.receiveShadow = true;
         obj.position.set( 0, 0, 0 );
         scene.add(gltf.scene);
         animate();
       });
 
-      loader.load("turntable.gltf", function (gltf) {
-        obj = gltf.scene;
-        obj.castShadow = false;
-        obj.receiveShadow = false;
-        obj.position.set( 0, 0, 0 );
-        scene.add(gltf.scene);
-        animate();
-      });
-
-      scene.background = new THREE.Color(0xffffff);
+      scene.background = new THREE.Color(0x000000);
 
       const dirLight = new THREE.DirectionalLight( 0xffffff, 3 );
 
-      dirLight.position.set( 0, 15, 0 );
-      dirLight.castShadow = false;
+      dirLight.position.set( 20, 10, 0 );
+      dirLight.castShadow = true;
       let t = new THREE.Object3D()
       dirLight.target.set = t;
       scene.add( dirLight );
 
       
       var point = new THREE.Vector3( 0, 0, 0 );
-      camera.position.set( 0, 10, 0 );
+      camera.position.set( 0, 200, 200 );
 
       var controls = new OrbitControls( camera, renderer.domElement );
       controls.listenToKeyEvents( window ); // optional
 
       //controls.addEventListener( 'change', render ); // call this only in static scenes (i.e., if there is no animation loop)
 
-      controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
+      controls.enableDamping = fasle; // an animation loop is required when either damping or auto-rotation are enabled
       controls.dampingFactor = 0.05;
 
       controls.screenSpacePanning = false;
