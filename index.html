@@ -48,16 +48,23 @@
 
       var obj;
 
-      loader.load("scene.gltf", function (gltf) {
+      loader.load("ali.gltf", function (gltf) {
         obj = gltf.scene;
         obj.castShadow = true;
         obj.receiveShadow = true;
+        
         obj.position.set( 0, 0, 0 );
         scene.add(gltf.scene);
         animate();
       });
 
+
       scene.background = new THREE.Color(0x000000);
+
+
+
+
+
 
       const dirLight = new THREE.DirectionalLight( 0xffffff, 3 );
 
@@ -71,8 +78,12 @@
       var point = new THREE.Vector3( 0, 0, 0 );
       camera.position.set( 0, 200, 200 );
 
+      
+
       var controls = new OrbitControls( camera, renderer.domElement );
       controls.listenToKeyEvents( window ); // optional
+      
+
 
       //controls.addEventListener( 'change', render ); // call this only in static scenes (i.e., if there is no animation loop)
 
@@ -92,6 +103,8 @@
         obj.rotation.y += 0.020;
         renderer.render(scene, camera);
       }
+
+
 
       
     </script>
