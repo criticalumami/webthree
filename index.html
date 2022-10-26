@@ -76,7 +76,7 @@
 
       
       var point = new THREE.Vector3( 0, 0, 0 );
-      camera.position.set( 0, 200, 200 );
+      camera.position.set( 0, 50, 100 );
 
       
 
@@ -100,7 +100,7 @@
 
       function animate() {
         requestAnimationFrame(animate);
-        obj.rotation.y += 0.010;
+        obj.rotation.y += 0.005;
         renderer.render(scene, camera);
       }
 
