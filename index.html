@@ -28,7 +28,7 @@
       
       import { OrbitControls } from "./OrbitControls.js";
       import { GLTFLoader } from "./GLTFLoader.js";
-
+ 
       var scene = new THREE.Scene();
 
       var camera = new THREE.PerspectiveCamera(
@@ -37,12 +37,15 @@
         0.01,
         500
       );
+
+      
       
       var renderer = new THREE.WebGLRenderer( { antialias: true } );
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
       renderer.shadowMap.enabled = true;
       renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer.physicallyCorrectLights = true;
 
       var loader = new GLTFLoader();
 
@@ -61,19 +64,21 @@
 
       scene.background = new THREE.Color(0x000000);
 
+      const dirLight = new THREE.PointLight ( 0xffffff, 1000, 110 );
 
-
-
-
-
-      const dirLight = new THREE.DirectionalLight( 0xffffff, 3 );
-
-      dirLight.position.set( 20, 10, 0 );
+      dirLight.position.set( 20, 100, 30 );
       dirLight.castShadow = true;
       let t = new THREE.Object3D()
-      dirLight.target.set = t;
       scene.add( dirLight );
+      
+      
+      dirLight.shadow.mapSize.width = 512; // default
+      dirLight.shadow.mapSize.height = 512; // default
+      dirLight.shadow.camera.near = 0.5; // default
+      dirLight.shadow.camera.far = 500; // default
 
+      {{/*  const helper = new THREE.CameraHelper( dirLight.shadow.camera );
+      scene.add( helper );  */}}
       
       var point = new THREE.Vector3( 0, 0, 0 );
       camera.position.set( 0, 50, 100 );
@@ -81,16 +86,15 @@
       
 
       var controls = new OrbitControls( camera, renderer.domElement );
-      controls.listenToKeyEvents( window ); // optional
       
 
 
       //controls.addEventListener( 'change', render ); // call this only in static scenes (i.e., if there is no animation loop)
 
-      controls.enableDamping = fasle; // an animation loop is required when either damping or auto-rotation are enabled
-      controls.dampingFactor = 0.05;
+      controls.enableDamping = fasle ; // an animation loop is required when either damping or auto-rotation are enabled
+      controls.dampingFactor = 0.05 ;
 
-      controls.screenSpacePanning = false;
+      controls.screenSpacePanning = true;
 
       controls.minDistance = 100;
       controls.maxDistance = 500;
