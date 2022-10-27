@@ -14,7 +14,7 @@
     <meta name="twitter:description" content="vroom vroom vroom vroom vroom vroom vroom vroom vroom vroom vroom vroom vroom vroom vroom vroom vroom vroom vroom vroom vroom vroom vroom vroom ">
     <meta name="twitter:image" content="https://envs.sh/Q17.png">
 
-    <title>D models</title>
+    <title>CORR_06</title>
     <style>
       body {
         margin: 0;
@@ -23,12 +23,36 @@
         display: block;
       }
 
+      #info {
+        position: absolute;
+        top: 25px;
+        width: 100%;
+        text-align: center;
+        z-index: 100;
+        display:block;
+        color: white;
+        font-family: monospace;
+        font-size: 20px;
+      }
+      #info2 {
+        position: absolute;
+        top: 75px;
+        width: 100%;
+        text-align: center;
+        z-index: 100;
+        display:block;
+        color: white;
+        font-family: monospace;
+      }
+
     </style>
   </head>
   <body>
 
+    <a id="info" href="https://envs.sh/Q1N.pdf" target="_blank">L'ancien plan</a>
+    <a id="info2" href="image.html" target="_blank">Prises de vue</a>
 
-    
+
     <script src="three.js"></script>
     <script type="module" src="GLTFLoader.js"></script>
     <script type="module" src="OrbitControls.js"></script>
@@ -88,7 +112,7 @@
       dirLight.shadow.camera.far = 500; // default
       
       var point = new THREE.Vector3( 0, 0, 0 );
-      camera.position.set( 0, 50, 100 );
+      camera.position.set( 0, 50, 100 );  
 
       
 
