@@ -86,9 +86,6 @@
       dirLight.shadow.mapSize.height = 512; // default
       dirLight.shadow.camera.near = 0.5; // default
       dirLight.shadow.camera.far = 500; // default
-
-      {{/*  const helper = new THREE.CameraHelper( dirLight.shadow.camera );
-      scene.add( helper );  */}}
       
       var point = new THREE.Vector3( 0, 0, 0 );
       camera.position.set( 0, 50, 100 );
@@ -99,7 +96,6 @@
       
 
 
-      //controls.addEventListener( 'change', render ); // call this only in static scenes (i.e., if there is no animation loop)
 
       controls.enableDamping = fasle ; // an animation loop is required when either damping or auto-rotation are enabled
       controls.dampingFactor = 0.05 ;
