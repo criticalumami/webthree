@@ -36,7 +36,7 @@
       }
       #info2 {
         position: absolute;
-        top: 75px;
+        top: 60px;
         width: 100%;
         text-align: center;
         z-index: 100;
@@ -62,7 +62,8 @@
 
 
     <a id="info" href="image.html">Prises de vue</a>
-    <a id="info2" href="https://envs.sh/Q1N.pdf" target="_blank">L'ancien plan</a>
+    <a id="info2" href="https://envs.sh/Q1N.pdf" target="_blank">Plans 2020</a>
+    <a id="info2" href="https://envs.sh/Q1N.pdf" target="_blank" style="top:90px">Carte</a>
 
 
     <script src="three.js"></script>
@@ -71,6 +72,7 @@
 
 
     <script type="module">
+
       
       import { OrbitControls } from "./OrbitControls.js";
       import { GLTFLoader } from "./GLTFLoader.js";
@@ -149,9 +151,6 @@
         obj.rotation.y += 0.005;
         renderer.render(scene, camera);
       }
-
-
-
       
     </script>
 
