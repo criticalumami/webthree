@@ -83,7 +83,7 @@
       var scene = new THREE.Scene();
 
       var camera = new THREE.PerspectiveCamera(
-        75,
+        80,
         window.innerWidth / window.innerHeight,
         0.01,
         500
@@ -128,10 +128,17 @@
 
       const dirLight = new THREE.PointLight ( 0xffffff, 1000, 110, 0.8 );
 
-      dirLight.position.set( 20, 100, 30 );
+      dirLight.position.set( -50, 80, 10 );
       dirLight.castShadow = true;
       let t = new THREE.Object3D()
       scene.add( dirLight );
+
+      const dirFight = new THREE.PointLight ( 0xffffff, 1000, 110, 0.8 );
+
+      dirFight.position.set( 0, 80, 50 );
+      dirFight.castShadow = true;
+      let f = new THREE.Object3D()
+      scene.add( dirFight );
       
       
       dirLight.shadow.mapSize.width = 512; // default
