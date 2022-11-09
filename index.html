@@ -126,21 +126,30 @@
 
       scene.background = new THREE.Color(0x000000);
 
-      const dirLight = new THREE.PointLight ( 0xffffff, 1000, 110, 0.8 );
+      const dirLight = new THREE.PointLight ( 0xffffff, 800, 110, 0.8 );
 
-      dirLight.position.set( -50, 80, 10 );
+      dirLight.position.set( -50, 80, -50 );
       dirLight.castShadow = true;
       let t = new THREE.Object3D()
       scene.add( dirLight );
 
-      const dirFight = new THREE.PointLight ( 0xffffff, 1000, 110, 0.8 );
+      const dirLight2 = new THREE.PointLight ( 0xffffff, 1000, 110, 0.8 );
 
-      dirFight.position.set( 0, 80, 50 );
+      dirLight2.position.set( -0, 100, -0 );
+      dirLight2.castShadow = true;
+      let t2 = new THREE.Object3D()
+      scene.add( dirLight2 );
+
+      const dirFight = new THREE.PointLight ( 0xffffff, 100, 110, 0.8 );
+
+      dirFight.position.set( 100, 80, 500 );
       dirFight.castShadow = true;
       let f = new THREE.Object3D()
       scene.add( dirFight );
       
-      
+      const trade = new THREE.AmbientLight( 0x404040 ); // soft white light
+scene.add( trade );
+
       dirLight.shadow.mapSize.width = 512; // default
       dirLight.shadow.mapSize.height = 512; // default
       dirLight.shadow.camera.near = 0.5; // default
@@ -163,7 +172,7 @@
 
       function animate() {
         requestAnimationFrame(animate);
-        obj.rotation.y += 0.005;
+        obj.rotation.y += 0.000;
         renderer.render(scene, camera);
       }
       
